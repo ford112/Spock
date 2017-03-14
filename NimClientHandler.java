@@ -1,4 +1,3 @@
-
 /**
  * ClientHandler.java
  *
@@ -21,11 +20,7 @@ public class NimClientHandler implements Runnable
 	private ArrayList<Socket> socketList;
 	Nim game = new Nim();
 
-<<<<<<< HEAD
 	NimClientHandler(Socket sock, ArrayList<Socket> socketList, Nim game)
-=======
-	NimClientHandler(Socket sock, ArrayList<Socket> socketList)
->>>>>>> 54c2aac5abc718a3483dd071d1bda68547bd269c
 	{
 		this.connectionSock = sock;
 		this.socketList = socketList;	// Keep reference to master list
@@ -59,7 +54,7 @@ public class NimClientHandler implements Runnable
 							int index = Integer.parseInt(s[0]);
 							int value = Integer.parseInt(s[1]);
 							clientOutput.writeBytes("Take " + value + " from row " + index + "\n");
-				
+
 						}
 					}
 				}
@@ -67,10 +62,10 @@ public class NimClientHandler implements Runnable
 				{
 				  // Connection was lost
 				  System.out.println("Closing connection for socket " + connectionSock);
-				   // Remove from arraylist
-				   socketList.remove(connectionSock);
-				   connectionSock.close();
-				   break;
+				  // Remove from arraylist
+				  socketList.remove(connectionSock);
+				  connectionSock.close();
+				  break;
 				}
 			}
 		}
