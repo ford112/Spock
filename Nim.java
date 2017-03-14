@@ -29,7 +29,7 @@ public class Nim
 
   public boolean checkGameover()
   {
-    int gameOver = false;
+    boolean gameOver = false;
 
     int numEmpty = 0;
     int numOne = 0;

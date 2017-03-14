@@ -50,9 +50,9 @@ public class NimClientHandler implements Runnable
 						{
 							DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
 							//clientOutput.writeBytes(clientText + "\n");
-							String[] s = clientText.split(" ");
-							int index = Integer.parseInt(s[0]);
-							int value = Integer.parseInt(s[1]);
+							String[] str = clientText.split(" ");
+							int index = Integer.parseInt(str[0]);
+							int value = Integer.parseInt(str[1]);
 							clientOutput.writeBytes("Take " + value + " from row " + index + "\n");
 							game.updateHeap(value, (index - 1));
 							clientOutput.writeBytes(game.getBoard());

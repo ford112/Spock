@@ -6,7 +6,7 @@
  * The server stores an ArrayList of sockets to perform the broadcast.
  *
  * The MTServer uses a ClientHandler whose code is in a separate file.
- * When a client connects, the MTServer starts a ClientHandler in a separate thread 
+ * When a client connects, the MTServer starts a ClientHandler in a separate thread
  * to receive messages from the client.
  *
  * To test, start the server first, then start multiple clients and type messages
@@ -26,9 +26,12 @@ public class NimServer
 	// Maintain list of all client sockets for broadcast
 	private ArrayList<Socket> socketList;
 
+	Nim game;
+
 	public NimServer()
 	{
 		socketList = new ArrayList<Socket>();
+		game = new Nim();
 	}
 
 	private void getConnection()
@@ -46,7 +49,7 @@ public class NimServer
 				// Add this socket to the list
 				socketList.add(connectionSock);
 				// Send to ClientHandler the socket and arraylist of all sockets
-				ClientHandler handler = new ClientHandler(connectionSock, this.socketList);
+				NimClientHandler handler = new NimClientHandler(connectionSock, this.socketList, game);
 				Thread theThread = new Thread(handler);
 				theThread.start();
 			}
