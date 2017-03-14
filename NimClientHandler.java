@@ -14,25 +14,26 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class ClientHandler implements Runnable
+public class NimClientHandler implements Runnable
 {
 	private Socket connectionSock = null;
 	private ArrayList<Socket> socketList;
+	Nim game = new Nim();
 
-	ClientHandler(Socket sock, ArrayList<Socket> socketList)
+	NimClientHandler(Socket sock, ArrayList<Socket> socketList, Nim game)
 	{
 		this.connectionSock = sock;
 		this.socketList = socketList;	// Keep reference to master list
+		this.game = game;
 	}
 
 	public void run()
 	{
-        		// Get data from a client and send it to everyone else
+    // Get data from a client and send it to everyone else
 		try
 		{
 			System.out.println("Connection made with socket " + connectionSock);
-			BufferedReader clientInput = new BufferedReader(
-				new InputStreamReader(connectionSock.getInputStream()));
+			BufferedReader clientInput = new BufferedReader(new InputStreamReader(connectionSock.getInputStream()));
 			while (true)
 			{
 				// Get data sent from a client
@@ -48,7 +49,12 @@ public class ClientHandler implements Runnable
 						if (s != connectionSock)
 						{
 							DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
-							clientOutput.writeBytes(clientText + "\n");
+							//clientOutput.writeBytes(clientText + "\n");
+							String[] s = clientText.split(" ");
+							int index = Integer.parseInt(s[0]);
+							int value = Integer.parseInt(s[1]);
+							clientOutput.writeBytes("Take " + value + " from row " + index + "\n");
+				
 						}
 					}
 				}

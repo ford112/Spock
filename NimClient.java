@@ -13,7 +13,7 @@
  *
  * Data received is sent to the output screen, so it is possible that as
  * a user is typing in information a message from the server will be
- * inserted.  
+ * inserted.
  *
  */
 import java.net.Socket;
@@ -40,7 +40,7 @@ public class MTClient
 			System.out.println("Connection made.");
 
 			// Start a thread to listen and display data sent by the server
-			ClientListener listener = new ClientListener(connectionSock);
+			NimClientListener listener = new NimClientListener(connectionSock);
 			Thread theThread = new Thread(listener);
 			theThread.start();
 
@@ -60,4 +60,3 @@ public class MTClient
 		}
 	}
 } // MTClient
-
