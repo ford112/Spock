@@ -54,6 +54,10 @@ public class NimClientHandler implements Runnable
 							int index = Integer.parseInt(s[0]);
 							int value = Integer.parseInt(s[1]);
 							clientOutput.writeBytes("Take " + value + " from row " + index + "\n");
+							game.updateHeap(value, (index - 1));
+							clientOutput.writeBytes(game.getBoard());
+							if (game.checkGameover() == true)
+								clientOutput.writeBytes("You lose! :(");
 
 						}
 					}
