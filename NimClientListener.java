@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class ClientListener implements Runnable
+public class NimClientListener implements Runnable
 {
 	private Socket connectionSock = null;
 

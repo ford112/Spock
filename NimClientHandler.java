@@ -1,3 +1,4 @@
+
 /**
  * ClientHandler.java
  *
@@ -14,12 +15,12 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class ClientHandler implements Runnable
+public class NimClientHandler implements Runnable
 {
 	private Socket connectionSock = null;
 	private ArrayList<Socket> socketList;
 
-	ClientHandler(Socket sock, ArrayList<Socket> socketList)
+	NimClientHandler(Socket sock, ArrayList<Socket> socketList)
 	{
 		this.connectionSock = sock;
 		this.socketList = socketList;	// Keep reference to master list

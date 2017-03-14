@@ -21,12 +21,12 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MTServer
+public class NimServer
 {
 	// Maintain list of all client sockets for broadcast
 	private ArrayList<Socket> socketList;
 
-	public MTServer()
+	public NimServer()
 	{
 		socketList = new ArrayList<Socket>();
 	}
@@ -62,7 +62,7 @@ public class MTServer
 
 	public static void main(String[] args)
 	{
-		MTServer server = new MTServer();
+		NimServer server = new NimServer();
 		server.getConnection();
 	}
-} // MTServer
+} // NimServer
