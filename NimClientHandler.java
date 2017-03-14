@@ -1,3 +1,4 @@
+
 /**
  * ClientHandler.java
  *
@@ -20,7 +21,11 @@ public class NimClientHandler implements Runnable
 	private ArrayList<Socket> socketList;
 	Nim game = new Nim();
 
+<<<<<<< HEAD
 	NimClientHandler(Socket sock, ArrayList<Socket> socketList, Nim game)
+=======
+	NimClientHandler(Socket sock, ArrayList<Socket> socketList)
+>>>>>>> 54c2aac5abc718a3483dd071d1bda68547bd269c
 	{
 		this.connectionSock = sock;
 		this.socketList = socketList;	// Keep reference to master list
