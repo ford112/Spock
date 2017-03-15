@@ -19,8 +19,7 @@ public class NimClientHandler implements Runnable
 	{
 		this.connectionSock = sock;
 		this.socketList = socketList;	// Keep reference to master list
-		player = socketList.size();
-		System.out.println("You are player " + player);
+		player = socketList.size(); // let server know what player is sending inputs
 	}
 
 	public void run()
@@ -42,11 +41,8 @@ public class NimClientHandler implements Runnable
 					// that sent us this information
 					for (Socket s : socketList)
 					{
-						//if (s != connectionSock)
-						//{
 							DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
 							clientOutput.writeBytes(clientText + " player: " + player + "\n");
-						//}
 					}
 				}
 				else

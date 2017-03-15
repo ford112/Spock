@@ -7,12 +7,9 @@ public class Nim
   public int[] heaps = {1, 3, 5, 7};
 
   Nim()
-  {
-    System.out.println("Nim started!");
-    System.out.println("Enter your first move!");
-    System.out.println("row col.");
-  }
+  {}
 
+  // return a visual of the stacks
   public String getBoard()
   {
     String board = "";
@@ -28,6 +25,7 @@ public class Nim
     return board;
   }
 
+  // update values of the array based on user input
   public void updateHeap(int heap, int numTaken)
   {
     if (numTaken <= heaps[heap])
@@ -36,10 +34,14 @@ public class Nim
       System.out.println("Too many");
   }
 
+  // check win conditions
   public boolean isOver()
   {
-    int emptyHeaps[] = {0, 0, 0, 0};
-    if (Arrays.equals(emptyHeaps, heaps))
+    int end1[] = {1, 0, 0, 0};
+    int end2[] = {0, 1, 0, 0};
+    int end3[] = {0, 0, 1, 0};
+    int end4[] = {0, 0, 0, 1};
+    if (Arrays.equals(end1, heaps) || Arrays.equals(end2, heaps) || Arrays.equals(end3, heaps) || Arrays.equals(end4, heaps))
       return true;
     else
       return false;

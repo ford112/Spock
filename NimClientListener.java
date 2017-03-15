@@ -13,7 +13,7 @@ public class NimClientListener implements Runnable
 {
 	private Socket connectionSock = null;
 
-	//boolean firstTurn = 1;
+	int playerTurn = 2;
 
 	NimClientListener(Socket sock)
 	{
@@ -26,27 +26,34 @@ public class NimClientListener implements Runnable
 		try
 		{
 			Nim game = new Nim();
-			System.out.println(game.getBoard());
+			// Welcome Speech
+			System.out.println("\nWelcome to the Nim Game!\n");
+			System.out.println("Please enter your turn in the form below:");
+			System.out.println("[heap] [amount]\n");
+			System.out.println("Thanks and have fun!\n");
 			BufferedReader serverInput = new BufferedReader(new InputStreamReader(connectionSock.getInputStream()));
 			while (true)
 			{
+				// Turn handling
+				if (playerTurn == 2)
+					playerTurn = 1;
+				else
+					playerTurn = 2;
+				System.out.println("It is player " + playerTurn + "'s turn:");
+				System.out.println(game.getBoard());
 				// Get data sent from the server
 				String serverText = serverInput.readLine();
 				if (serverInput != null)
 				{
+					// get ints from string input, to be used in Nim's updateHeap()
 					String[] serverTextArr = serverText.split(" ");
 					int heap = Integer.parseInt(serverTextArr[0]);
 					int num = Integer.parseInt(serverTextArr[1]);
 					game.updateHeap((heap - 1), num);
-					System.out.println(game.getBoard());
 					if (game.isOver())
 					{
-						char won = '\0';
-						if (serverText.charAt(4) == '1')
-							won = '2';
-						else
-							won = '1';
-						System.out.println("Game over my guys. Player " + won + " wins.");
+						System.out.println("Game over my guys. Player " + playerTurn + " wins.");
+						System.out.println("Goodbye, please press enter.");
 						connectionSock.close();
 						break;
 					}
