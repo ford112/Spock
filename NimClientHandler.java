@@ -18,13 +18,13 @@ public class NimClientHandler implements Runnable
 {
 	private Socket connectionSock = null;
 	private ArrayList<Socket> socketList;
-	Nim game = new Nim();
+	private int player;
 
-	NimClientHandler(Socket sock, ArrayList<Socket> socketList, Nim game)
+	NimClientHandler(Socket sock, ArrayList<Socket> socketList)
 	{
 		this.connectionSock = sock;
 		this.socketList = socketList;	// Keep reference to master list
-		this.game = game;
+		player = socketList.size();
 	}
 
 	public void run()
@@ -49,16 +49,7 @@ public class NimClientHandler implements Runnable
 						if (s != connectionSock)
 						{
 							DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
-							//clientOutput.writeBytes(clientText + "\n");
-							String[] str = clientText.split(" ");
-							int index = Integer.parseInt(str[0]);
-							int value = Integer.parseInt(str[1]);
-							clientOutput.writeBytes("Take " + value + " from row " + index + "\n");
-							game.updateHeap(value, (index - 1));
-							clientOutput.writeBytes(game.getBoard());
-							if (game.checkGameover() == true)
-								clientOutput.writeBytes("You lose! :(");
-
+							clientOutput.writeBytes(clientText + "player" + "\n");
 						}
 					}
 				}

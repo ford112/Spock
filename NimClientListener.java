@@ -17,7 +17,7 @@ public class NimClientListener implements Runnable
 {
 	private Socket connectionSock = null;
 
-	ClientListener(Socket sock)
+	NimClientListener(Socket sock)
 	{
 		this.connectionSock = sock;
 	}
@@ -27,6 +27,7 @@ public class NimClientListener implements Runnable
     // Wait for data from the server.  If received, output it.
 		try
 		{
+			Nim game = new Nim();
 			BufferedReader serverInput = new BufferedReader(new InputStreamReader(connectionSock.getInputStream()));
 			while (true)
 			{

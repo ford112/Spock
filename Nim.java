@@ -5,11 +5,20 @@ public class Nim
 {
   public int[] heaps = {1, 3, 5, 7};
 
+  Nim()
+  {
+    System.out.println("Nim started!");
+    System.out.println("Enter your first move!")
+    System.out.println("row col.");
+  }
+
   public String getRow(int num)
   {
     String row = "";
+    row += num + ": "
     for (int i = 0; i < num; ++i)
       row += "X ";
+    row += "\n";
     return row;
   }
 
@@ -25,26 +34,15 @@ public class Nim
   {
     if (numTaken <= heaps[heap])
       heaps[heap] -= numTaken;
+    else
+      System.out.println("Too many");
   }
 
   public boolean checkGameover()
   {
-    boolean gameOver = false;
-
-    int numEmpty = 0;
-    int numOne = 0;
-
-    for (int i = 0; i < 4; ++i)
-    {
-      if (heaps[i] == 0)
-        numOne++;
-      else if (heaps[i] == 1)
-        numOne++;
-    }
-
-    if (numEmpty == 3 && numOne == 1)
-      gameOver = true;
-
-    return gameOver;
+    if (Arrays.equals({0, 0, 0, 0}, heaps))
+      return true;
+    else
+      return false;
   }
 }
