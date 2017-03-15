@@ -1,5 +1,6 @@
 // Bobby Kain and Akash Arora
 
+import java.util.*;
 
 public class Nim
 {
@@ -8,29 +9,26 @@ public class Nim
   Nim()
   {
     System.out.println("Nim started!");
-    System.out.println("Enter your first move!")
+    System.out.println("Enter your first move!");
     System.out.println("row col.");
-  }
-
-  public String getRow(int num)
-  {
-    String row = "";
-    row += num + ": "
-    for (int i = 0; i < num; ++i)
-      row += "X ";
-    row += "\n";
-    return row;
   }
 
   public String getBoard()
   {
     String board = "";
     for (int i = 0; i < 4; ++i)
-      board += getRow(heaps[i]) + "\n";
+    {
+      board += (i + 1) + ": ";
+      for (int j = 0; j < heaps[i]; ++j)
+      {
+        board += "X ";
+      }
+      board += "\n";
+    }
     return board;
   }
 
-  public void updateHeap(int numTaken, int heap)
+  public void updateHeap(int heap, int numTaken)
   {
     if (numTaken <= heaps[heap])
       heaps[heap] -= numTaken;
@@ -38,9 +36,10 @@ public class Nim
       System.out.println("Too many");
   }
 
-  public boolean checkGameover()
+  public boolean isOver()
   {
-    if (Arrays.equals({0, 0, 0, 0}, heaps))
+    int emptyHeaps[] = {0, 0, 0, 0};
+    if (Arrays.equals(emptyHeaps, heaps))
       return true;
     else
       return false;

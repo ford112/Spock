@@ -1,11 +1,6 @@
-/**
- * ClientHandler.java
- *
- * This class handles communication between the client
- * and the server.  It runs in a separate thread but has a
- * link to a common list of sockets to handle broadcast.
- *
- */
+// Bobby Kain and Akash
+// edited version of Dr Fahys ClientHandler.java
+
 import java.net.Socket;
 import java.io.DataOutputStream;
 import java.io.BufferedReader;
@@ -25,6 +20,7 @@ public class NimClientHandler implements Runnable
 		this.connectionSock = sock;
 		this.socketList = socketList;	// Keep reference to master list
 		player = socketList.size();
+		System.out.println("You are player " + player);
 	}
 
 	public void run()
@@ -46,11 +42,11 @@ public class NimClientHandler implements Runnable
 					// that sent us this information
 					for (Socket s : socketList)
 					{
-						if (s != connectionSock)
-						{
+						//if (s != connectionSock)
+						//{
 							DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
-							clientOutput.writeBytes(clientText + "player" + "\n");
-						}
+							clientOutput.writeBytes(clientText + " player: " + player + "\n");
+						//}
 					}
 				}
 				else

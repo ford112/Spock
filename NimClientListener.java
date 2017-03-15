@@ -1,10 +1,6 @@
-/**
- * ClientListener.java
- *
- * This class runs on the client end and just
- * displays any text received from the server.
- *
- */
+// Bobby Kain and Akash
+// edited version of Dr Fahys ClientListener.java
+
 import java.net.Socket;
 import java.io.DataOutputStream;
 import java.io.BufferedReader;
@@ -17,6 +13,8 @@ public class NimClientListener implements Runnable
 {
 	private Socket connectionSock = null;
 
+	//boolean firstTurn = 1;
+
 	NimClientListener(Socket sock)
 	{
 		this.connectionSock = sock;
@@ -28,6 +26,7 @@ public class NimClientListener implements Runnable
 		try
 		{
 			Nim game = new Nim();
+			System.out.println(game.getBoard());
 			BufferedReader serverInput = new BufferedReader(new InputStreamReader(connectionSock.getInputStream()));
 			while (true)
 			{
@@ -35,7 +34,22 @@ public class NimClientListener implements Runnable
 				String serverText = serverInput.readLine();
 				if (serverInput != null)
 				{
-					System.out.println(serverText);
+					String[] serverTextArr = serverText.split(" ");
+					int heap = Integer.parseInt(serverTextArr[0]);
+					int num = Integer.parseInt(serverTextArr[1]);
+					game.updateHeap((heap - 1), num);
+					System.out.println(game.getBoard());
+					if (game.isOver())
+					{
+						char won = '\0';
+						if (serverText.charAt(4) == '1')
+							won = '2';
+						else
+							won = '1';
+						System.out.println("Game over my guys. Player " + won + " wins.");
+						connectionSock.close();
+						break;
+					}
 				}
 				else
 				{
