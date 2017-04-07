@@ -26,12 +26,9 @@ public class Spock
   }
 
   // update values of the array based on user input
-  public void updateHeap(int heap, int numTaken)
+  public void update(String turn)
   {
-    if (numTaken <= heaps[heap])
-      heaps[heap] -= numTaken;
-    else
-      System.out.println("Too many");
+      System.out.println(turn);
   }
 
   // check win conditions

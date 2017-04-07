@@ -54,4 +54,4 @@ public class SpockServer
 		SpockServer server = new SpockServer();
 		server.getConnection();
 	}
-} // NimServer
+} // SpockServer

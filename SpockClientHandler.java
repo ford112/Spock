@@ -42,7 +42,7 @@ public class SpockClientHandler implements Runnable
 					for (Socket s : socketList)
 					{
 							DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
-							clientOutput.writeBytes(clientText + " player: " + player + "\n");
+					//	clientOutput.writeBytes(clientText + " player: " + player + "\n");
 					}
 				}
 				else

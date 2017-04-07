@@ -50,10 +50,7 @@ public class SpockClientListener implements Runnable
 				if (serverInput != null)
 				{
 					// get ints from string input, to be used in Nim's updateHeap()
-					String[] serverTextArr = serverText.split(" ");
-					int heap = Integer.parseInt(serverTextArr[0]);
-					int num = Integer.parseInt(serverTextArr[1]);
-					game.updateHeap((heap - 1), num);
+					game.update(serverText);
 					if (game.isOver())
 					{
 						System.out.println("Game over my guys. Player " + playerTurn + " wins.");
