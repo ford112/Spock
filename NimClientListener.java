@@ -27,9 +27,9 @@ public class NimClientListener implements Runnable
 		{
 			Nim game = new Nim();
 			// Welcome Speech
-			System.out.println("\nWelcome to the Nim Game!\n");
-			System.out.println("Please enter your turn in the form below:");
-			System.out.println("[heap] [amount]\n");
+			System.out.println("\nWelcome to Rock, Paper, Scissors, Lizard, Spock!\n");
+			System.out.println("Incase you forgot how to spell your options, check out the title.");
+			System.out.println("After both players have chosen their weapon we will tell you who won.");
 			System.out.println("Thanks and have fun!\n");
 			BufferedReader serverInput = new BufferedReader(new InputStreamReader(connectionSock.getInputStream()));
 			while (true)
