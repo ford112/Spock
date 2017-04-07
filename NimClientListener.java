@@ -34,13 +34,17 @@ public class NimClientListener implements Runnable
 			BufferedReader serverInput = new BufferedReader(new InputStreamReader(connectionSock.getInputStream()));
 			while (true)
 			{
-				// Turn handling
-				if (playerTurn == 2)
-					playerTurn = 1;
-				else
-					playerTurn = 2;
-				System.out.println("It is player " + playerTurn + "'s turn:");
-				System.out.println(game.getBoard());
+				System.out.println("Select Weapon: ");
+				
+			// Turn handling
+			//	if (playerTurn == 2)
+			//		playerTurn = 1;
+			//	else
+			//		playerTurn = 2;
+			//	System.out.println("It is player " + playerTurn + "'s turn:");
+			//	System.out.println(game.getBoard());
+			
+
 				// Get data sent from the server
 				String serverText = serverInput.readLine();
 				if (serverInput != null)
