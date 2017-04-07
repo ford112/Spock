@@ -2,11 +2,11 @@
 
 import java.util.*;
 
-public class Nim
+public class Spock 
 {
   public int[] heaps = {1, 3, 5, 7};
 
-  Nim()
+  Spock()
   {}
 
   // return a visual of the stacks

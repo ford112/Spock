@@ -1,11 +1,6 @@
-/**
- * ClientHandler.java
- *
- * This class handles communication between the client
- * and the server.  It runs in a separate thread but has a
- * link to a common list of sockets to handle broadcast.
- *
- */
+// Bobby Kain and Akash
+// edited version of Dr Fahys ClientHandler.java
+
 import java.net.Socket;
 import java.io.DataOutputStream;
 import java.io.BufferedReader;
@@ -14,25 +9,26 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class ClientHandler implements Runnable
+public class SpockClientHandler implements Runnable
 {
 	private Socket connectionSock = null;
 	private ArrayList<Socket> socketList;
+	private int player;
 
-	ClientHandler(Socket sock, ArrayList<Socket> socketList)
+	SpockClientHandler(Socket sock, ArrayList<Socket> socketList)
 	{
 		this.connectionSock = sock;
 		this.socketList = socketList;	// Keep reference to master list
+		player = socketList.size(); // let server know what player is sending inputs
 	}
 
 	public void run()
 	{
-        		// Get data from a client and send it to everyone else
+    // Get data from a client and send it to everyone else
 		try
 		{
 			System.out.println("Connection made with socket " + connectionSock);
-			BufferedReader clientInput = new BufferedReader(
-				new InputStreamReader(connectionSock.getInputStream()));
+			BufferedReader clientInput = new BufferedReader(new InputStreamReader(connectionSock.getInputStream()));
 			while (true)
 			{
 				// Get data sent from a client
@@ -45,21 +41,18 @@ public class ClientHandler implements Runnable
 					// that sent us this information
 					for (Socket s : socketList)
 					{
-						if (s != connectionSock)
-						{
 							DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
-							clientOutput.writeBytes(clientText + "\n");
-						}
+							clientOutput.writeBytes(clientText + " player: " + player + "\n");
 					}
 				}
 				else
 				{
 				  // Connection was lost
 				  System.out.println("Closing connection for socket " + connectionSock);
-				   // Remove from arraylist
-				   socketList.remove(connectionSock);
-				   connectionSock.close();
-				   break;
+				  // Remove from arraylist
+				  socketList.remove(connectionSock);
+				  connectionSock.close();
+				  break;
 				}
 			}
 		}

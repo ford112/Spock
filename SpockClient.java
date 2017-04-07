@@ -1,21 +1,6 @@
-/**
- * MTClient.java
- *
- * This program implements a simple multithreaded chat client.  It connects to the
- * server (assumed to be localhost on port 7654) and starts two threads:
- * one for listening for data sent from the server, and another that waits
- * for the user to type something in that will be sent to the server.
- * Anything sent to the server is broadcast to all clients.
- *
- * The MTClient uses a ClientListener whose code is in a separate file.
- * The ClientListener runs in a separate thread, recieves messages form the server,
- * and displays them on the screen.
- *
- * Data received is sent to the output screen, so it is possible that as
- * a user is typing in information a message from the server will be
- * inserted.  
- *
- */
+// Bobby Kain and Akash
+// edited version of Dr Fahys Client.java
+
 import java.net.Socket;
 import java.io.DataOutputStream;
 import java.io.BufferedReader;
@@ -23,13 +8,13 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class MTClient
+public class SpockClient
 {
 	public static void main(String[] args)
 	{
 		try
 		{
-			String hostname = "10.49.139.235";
+			String hostname = "localhost";
 			int port = 7654;
 
 			System.out.println("Connecting to server on port " + port);
@@ -40,7 +25,7 @@ public class MTClient
 			System.out.println("Connection made.");
 
 			// Start a thread to listen and display data sent by the server
-			ClientListener listener = new ClientListener(connectionSock);
+			SpockClientListener listener = new SpockClientListener(connectionSock);
 			Thread theThread = new Thread(listener);
 			theThread.start();
 
@@ -60,4 +45,3 @@ public class MTClient
 		}
 	}
 } // MTClient
-

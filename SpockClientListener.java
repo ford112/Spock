@@ -9,13 +9,13 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class NimClientListener implements Runnable
+public class SpockClientListener implements Runnable
 {
 	private Socket connectionSock = null;
 
 	int playerTurn = 2;
 
-	NimClientListener(Socket sock)
+	SpockClientListener(Socket sock)
 	{
 		this.connectionSock = sock;
 	}
@@ -25,7 +25,7 @@ public class NimClientListener implements Runnable
     // Wait for data from the server.  If received, output it.
 		try
 		{
-			Nim game = new Nim();
+			Spock game = new Spock();
 			// Welcome Speech
 			System.out.println("\nWelcome to Rock, Paper, Scissors, Lizard, Spock!\n");
 			System.out.println("Incase you forgot how to spell your options, check out the title.");
