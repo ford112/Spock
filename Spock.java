@@ -12,7 +12,8 @@ public class Spock
   public String player3;
   public String player4;
   public String player5;
-  public String displayChoices;
+  public String playerChoices;
+  public String winners;
   Spock() {}
 
   //Error handler for user input
@@ -37,7 +38,8 @@ public class Spock
 	player3 = "";
 	player4 = "";
 	player5 = "";
-	displayChoices = "";
+	playerChoices = "";
+	winners = "";
   }
 
   //Stores player input (if Valid)
@@ -54,7 +56,7 @@ public class Spock
 		} else if (player == 5) {
 			player5 = input;
 		}
-		displayChoices += "/nPlayer " + player + ": " + input;
+		playerChoices += "/nPlayer " + player + ": " + input;
 	}  else {
 		System.out.print("Invalid User Input");
 	}
@@ -84,8 +86,14 @@ public class Spock
 
   //Displays which players chose which weapons
   public String displayChoices() {
-	return displayChoices;
+	return playerChoices;
   }
+
+  //Displays winners
+  public String displayWinners() {
+	//runs through player choices and decides who chose the winning weapons and appends to winners.
+	return winners; 
+ }
 
   // check win conditions
   public boolean isOver()
