@@ -41,7 +41,7 @@ public class SpockClientHandler implements Runnable
 					// that sent us this information
 					for (Socket s : socketList)
 					{
-							DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
+						DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
 					//	clientOutput.writeBytes(clientText + " player: " + player + "\n");
 					}
 				}
@@ -63,4 +63,4 @@ public class SpockClientHandler implements Runnable
 			socketList.remove(connectionSock);
 		}
 	}
-} // ClientHandler for MTServer.java
+}
