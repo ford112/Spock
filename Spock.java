@@ -45,7 +45,7 @@ public class Spock
 	if (isValidInput(player, input)) {
 		if(player == 1) {
 			player1 = input;
-		} else if (player == 2)
+		} else if (player == 2) {
 			player2 = input;
 		} else if (player == 3) {
 			player3 = input;
@@ -53,9 +53,11 @@ public class Spock
 			player4 = input;
 		} else if (player == 5) {
 			player5 = input;
-		}  else {
-			System.out.print("Invalid User Input");
 		}
+		displayChoices += "/nPlayer " + player + ": " + input;
+	}  else {
+		System.out.print("Invalid User Input");
+	}
   }
 		
 
@@ -80,6 +82,7 @@ public class Spock
 	}
   }
 
+  //Displays which players chose which weapons
   public String displayChoices() {
 	return displayChoices;
   }
