@@ -1,28 +1,38 @@
-// Bobby Kain and Akash Arora
+// Chinmai Raman and Akash Arora
 
 import java.util.*;
 
-public class Spock 
+public class Spock
 {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8cf04c352945c80675bc4541bac18555469c5601
   Spock()
  {}
 
+<<<<<<< HEAD
   // return a visual of the stacks
   //public String getBoard()
   //{
   //
   //}
-
-  // update values of the array based on user input
-  public void update(String turn)
+=======
+  // check win conditions
+  public void decideWinner(String input1, String input2)
   {
-      System.out.println(turn);
+>>>>>>> 8cf04c352945c80675bc4541bac18555469c5601
+
+    System.out.println("HI");
   }
 
+<<<<<<< HEAD
   // check win conditions
   public boolean isOver()
   {
       return false;
   }
+=======
+
+>>>>>>> 8cf04c352945c80675bc4541bac18555469c5601
 }

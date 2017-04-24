@@ -1,4 +1,4 @@
-// Bobby Kain and Akash
+// Chinmai Raman and Akash Arora
 // edited version of Dr Fahys Server.java
 
 import java.net.ServerSocket;

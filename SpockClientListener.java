@@ -1,4 +1,4 @@
-// Bobby Kain and Akash
+// Chinmai Raman and Akash Arora
 // edited version of Dr Fahys ClientListener.java
 
 import java.net.Socket;
@@ -26,6 +26,7 @@ public class SpockClientListener implements Runnable
 		try
 		{
 			Spock game = new Spock();
+			game.decideWinner("yo","lo");
 			// Welcome Speech
 			System.out.println("\nWelcome to Rock, Paper, Scissors, Lizard, Spock!\n");
 			System.out.println("Incase you forgot how to spell your options, check out the title.");
@@ -35,7 +36,7 @@ public class SpockClientListener implements Runnable
 			while (true)
 			{
 				System.out.println("Select Weapon: ");
-				
+
 			// Turn handling
 			//	if (playerTurn == 2)
 			//		playerTurn = 1;
@@ -43,21 +44,15 @@ public class SpockClientListener implements Runnable
 			//		playerTurn = 2;
 			//	System.out.println("It is player " + playerTurn + "'s turn:");
 			//	System.out.println(game.getBoard());
-			
+
 
 				// Get data sent from the server
 				String serverText = serverInput.readLine();
 				if (serverInput != null)
 				{
 					// get ints from string input, to be used in Nim's updateHeap()
-					game.update(serverText);
-					if (game.isOver())
-					{
-						System.out.println("Game over my guys. Player " + playerTurn + " wins.");
-						System.out.println("Goodbye, please press enter.");
-						connectionSock.close();
-						break;
-					}
+					//game.update(serverText);
+					//End game here
 				}
 				else
 				{
