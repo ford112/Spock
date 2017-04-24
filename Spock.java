@@ -37,7 +37,7 @@ public class Spock
 	player3 = "";
 	player4 = "";
 	player5 = "";
-	displayChoice = "";
+	displayChoices = "";
   }
 
   //Stores player input (if Valid)
