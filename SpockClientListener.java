@@ -25,8 +25,7 @@ public class SpockClientListener implements Runnable
     // Wait for data from the server.  If received, output it.
 		try
 		{
-			Spock game = new Spock();
-			game.decideWinner("yo","lo");
+			Spock game = new Spock();	
 			// Welcome Speech
 			System.out.println("\nWelcome to Rock, Paper, Scissors, Lizard, Spock!\n");
 			System.out.println("Incase you forgot how to spell your options, check out the title.");
