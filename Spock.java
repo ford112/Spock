@@ -7,6 +7,7 @@ public class Spock
   //Game Manager - Indicies correspond to specific weapons. At anyime, the weapon is either knocked out (== 1) or alive (==0)
   //(rock == isAlive[0], paper == isAlive[1], scissors == isAlive[2], lizard = isAlive[3], spock = isAlive[4])
   public int isAlive[] = new int[5];
+  public int isLocked[] = new int[5]; 
   public String player1;
   public String player2;
   public String player3;
@@ -20,7 +21,8 @@ public class Spock
   public boolean isValidInput(int playerNumber, String input) {
         input = input.toLowerCase();
         if ((input.equals("rock") || input.equals("paper") || input.equals("scissors") || input.equals("lizard") || input.equals("spock")) && playerNumber <= 5) {
-                return true;
+                 isLocked[playerNumber] = 1;
+		 return true;
         } else {
                 return false;
         }
@@ -33,6 +35,11 @@ public class Spock
 	isAlive[2] = 0;
 	isAlive[3] = 0;
 	isAlive[4] = 0;
+        isLocked[0] = 0;
+	isLocked[1] = 0;
+	isLocked[2] = 0;
+	isLocked[3] = 0;
+	isLocked[4] = 0;
 	player1 = "";
 	player2 = "";
 	player3 = "";

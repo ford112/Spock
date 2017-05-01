@@ -34,26 +34,29 @@ public class SpockClientHandler implements Runnable
 			while (true)
 			{
 				// Get data sent from a client
-				String clientText = clientInput.readLine();
-				if (clientText != null)
-				{
-					System.out.println("Received: " + clientText);
-					// Turn around and output this data
-					// to all other clients except the one
-					// that sent us this information
-					for (Socket s : socketList)
+					String clientText = clientInput.readLine();
+					if (clientText != null)
 					{
-						DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
-                                                System.out.println("sending output to all clients");
-					        if (game.isValidInput(player, clientText)) {
-							clientOutput.writeBytes("Proper Selection");
-						} else {
-							clientOutput.writeBytes("Invalid");
-						}
-                                        //	clientOutput.writeBytes("\n\n" + " player: " + player + "\n\n");
-						clientOutput.writeBytes("\n\n");
- 					}
-				}
+						System.out.println("Received: " + clientText);
+						// Turn around and output this data
+						// to all other clients except the one
+						// that sent us this information
+						for (Socket s : socketList)
+						{
+							if (game.isLocked[player]==0) { 
+							DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
+                                                	System.out.println("sending output to all clients");
+						        if (game.isValidInput(player, clientText)) {
+								clientOutput.writeBytes("Proper Selection");	
+							} else {
+								clientOutput.writeBytes("Invalid");
+							} 	
+                                	        //	clientOutput.writeBytes("\n\n" + " player: " + player + "\n\n");
+							clientOutput.writeBytes("\n\n");
+}
+ 						}
+					}
+				
 				else
 				{
 				  // Connection was lost
