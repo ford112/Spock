@@ -37,7 +37,7 @@ public class SpockServer
 				// Add this socket to the list
 				socketList.add(connectionSock);
 				// Send to ClientHandler the socket and arraylist of all sockets
-				SpockClientHandler handler = new SpockClientHandler(connectionSock, this.socketList);
+				SpockClientHandler handler = new SpockClientHandler(connectionSock, this.socketList, this.game);
 				Thread theThread = new Thread(handler);
 				theThread.start();
 			}

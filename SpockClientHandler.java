@@ -14,11 +14,13 @@ public class SpockClientHandler implements Runnable
 	private Socket connectionSock = null;
 	private ArrayList<Socket> socketList;
 	private int player;
+	public Spock game;
 
-	SpockClientHandler(Socket sock, ArrayList<Socket> socketList)
+	SpockClientHandler(Socket sock, ArrayList<Socket> socketList, Spock game)
 	{
 		this.connectionSock = sock;
-		this.socketList = socketList;	// Keep reference to master list
+		this.socketList = socketList;
+		this.game = game;	// Keep reference to master list
 		player = socketList.size(); // let server know what player is sending inputs
 	}
 
@@ -42,8 +44,15 @@ public class SpockClientHandler implements Runnable
 					for (Socket s : socketList)
 					{
 						DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
-					//	clientOutput.writeBytes(clientText + " player: " + player + "\n");
-					}
+                                                System.out.println("sending output to all clients");
+					        if (game.isValidInput(player, clientText)) {
+							clientOutput.writeBytes("Proper Selection");
+						} else {
+							clientOutput.writeBytes("Invalid");
+						}
+                                        //	clientOutput.writeBytes("\n\n" + " player: " + player + "\n\n");
+						clientOutput.writeBytes("\n\n");
+ 					}
 				}
 				else
 				{

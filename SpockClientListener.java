@@ -13,7 +13,7 @@ public class SpockClientListener implements Runnable
 {
 	private Socket connectionSock = null;
 
-	int playerTurn = 2;
+//	int playerTurn = 2;
 
 	SpockClientListener(Socket sock)
 	{
@@ -25,16 +25,17 @@ public class SpockClientListener implements Runnable
     // Wait for data from the server.  If received, output it.
 		try
 		{
-			Spock game = new Spock();	
+		//	Spock game = new Spock();	
 			// Welcome Speech
 			System.out.println("\nWelcome to Rock, Paper, Scissors, Lizard, Spock!\n");
 			System.out.println("Incase you forgot how to spell your options, check out the title.");
 			System.out.println("After both players have chosen their weapon we will tell you who won.");
 			System.out.println("Thanks and have fun!\n");
+			System.out.println("\nSelect Weapon: ");
 			BufferedReader serverInput = new BufferedReader(new InputStreamReader(connectionSock.getInputStream()));
 			while (true)
 			{
-				System.out.println("Select Weapon: ");
+				//System.out.println("Select Weapon: ");
 
 			// Turn handling
 			//	if (playerTurn == 2)
@@ -49,7 +50,8 @@ public class SpockClientListener implements Runnable
 				String serverText = serverInput.readLine();
 				if (serverInput != null)
 				{
-					// get ints from string input, to be used in Nim's updateHeap()
+			                System.out.print(serverText);
+                         		// get ints from string input, to be used in Nim's updateHeap()
 					//game.update(serverText);
 					//End game here
 				}
