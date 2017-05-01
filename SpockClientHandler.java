@@ -47,9 +47,11 @@ public class SpockClientHandler implements Runnable
 							DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
                                                 	System.out.println("sending output to all clients");
 						        if (game.isValidInput(player, clientText)) {
-								clientOutput.writeBytes("Proper Selection");	
+								clientOutput.writeBytes("Proper Selection. Waiting for other players...");	
+								game.assign(player, clientText);
+								clientOutput.writeBytes(game.displayChoices());
 							} else {
-								clientOutput.writeBytes("Invalid");
+								clientOutput.writeBytes("Invalid Input, please try again.");
 							} 	
                                 	        //	clientOutput.writeBytes("\n\n" + " player: " + player + "\n\n");
 							clientOutput.writeBytes("\n\n");

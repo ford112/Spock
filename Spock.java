@@ -28,6 +28,9 @@ public class Spock
         }
   }
 
+//  public String getChoices() {
+//	System.out.println(Arrays.toString(isAlive));
+
   //Resets player choices, and sets all weapons to "alive",
   public void reset() {
 	isAlive[0] = 0;
