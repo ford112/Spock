@@ -20,6 +20,7 @@ public class SpockServer
 	{
 		socketList = new ArrayList<Socket>();
 		game = new Spock();
+		game.reset();
 	}
 
 	private void getConnection()
@@ -27,7 +28,7 @@ public class SpockServer
 		// Wait for a connection from the client
 		try
 		{
-			System.out.println("Waiting for client connections on port 7654.");
+			System.out.println("Waiting for client connections on port 7655.");
 			ServerSocket serverSock = new ServerSocket(7654);
 			// This is an infinite loop, the user will have to shut it down
 			// using control-c
@@ -53,5 +54,6 @@ public class SpockServer
 	{
 		SpockServer server = new SpockServer();
 		server.getConnection();
+	//	game.reset();
 	}
 } // SpockServer

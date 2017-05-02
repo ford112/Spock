@@ -15,7 +15,9 @@ public class Spock
   public String player5;
   public String playerChoices = "";
   public String winners;
-  Spock() {}
+  Spock() {
+	reset();
+  }
 
   //Error handler for user input
   public boolean isValidInput(int playerNumber, String input) {
@@ -102,8 +104,20 @@ public class Spock
   //Displays winners
   public String displayWinners() {
 	//runs through player choices and decides who chose the winning weapons and appends to winners.
+	String[] separated = playerChoices.split("\n");
+	for (int i = 0; i < separated.length; i++) {
+		for (int j = 0; j < isAlive.length; j++) {
+			if (j == 0 && isAlive[j] == 0) {
+				if (separated[i].contains("rock")) {
+					winners += separated[i];
+				}
+			}
+		}
+	}
 	return winners; 
- }
+  }
+
+  
 
   // check win conditions
   public boolean isOver()
