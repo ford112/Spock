@@ -13,7 +13,7 @@ public class Spock
   public String player3;
   public String player4;
   public String player5;
-  public String playerChoices;
+  public String playerChoices = "";
   public String winners;
   Spock() {}
 
@@ -66,7 +66,7 @@ public class Spock
 		} else if (player == 5) {
 			player5 = input;
 		}
-		playerChoices += "/nPlayer " + player + ": " + input;
+		playerChoices += "\nPlayer " + player + ": " + input;
 	}  else {
 		System.out.print("Invalid User Input");
 	}
