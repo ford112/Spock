@@ -35,29 +35,24 @@ public class SpockClientHandler implements Runnable
 			{
 				// Get data sent from a client
 				String clientText = clientInput.readLine();
-				if (clientText != null)
-					{
-						System.out.println("Received: " + clientText);
-						// Turn around and output this data
-						// to all other clients except the one
-						// that sent us this information
+				if (clientText != null)	{
+					System.out.println("Received: " + clientText);
+					// Turn around and output this data
+					// to all other clients except the one
+					// that sent us this information
+					if (game.isValidInput(player, clientText)) {				
+						game.assign(player, clientText);	
 						for (Socket s : socketList)
 						{
 							DataOutputStream clientOutput = new DataOutputStream(s.getOutputStream());
-                                                //	System.out.println("sending output to all clients");
-						        if (game.isValidInput(player, clientText)) {
-								clientOutput.writeBytes("Player has locked in.");	
-								game.assign(player, clientText);
-								clientOutput.writeBytes(game.displayChoices());
-							} else {
-								clientOutput.writeBytes("Invalid Input");
-							}	
-                                	        //	clientOutput.writeBytes("\n\n" + " player: " + player + "\n\n");
-							clientOutput.writeBytes("\n\n");
- 						}
-					}
-				else
-				{
+							clientOutput.writeBytes("Player " + player + " has locked in.\n");	
+							clientOutput.writeBytes(game.displayChoices());
+						}
+ 					} else {
+                                                DataOutputStream clientOutput = new DataOutputStream(connectionSock.getOutputStream());
+                                                clientOutput.writeBytes("Invalid Input\n");
+                                        }
+				} else {
 				  // Connection was lost
 				  System.out.println("Closing connection for socket " + connectionSock);
 				  // Remove from arraylist
